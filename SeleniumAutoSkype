@@ -1,0 +1,38 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+browser = webdriver.Chrome()
+
+browser.get("https://web.skype.com/")
+#time.sleep(15)
+html = browser.find_element(By.XPATH, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
+html.send_keys('') #login
+
+button = browser.find_element(By.XPATH, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div[3]/div/div/div/div[4]/div/div/div/div/input')
+button.click()
+
+password = browser.find_element(By.XPATH, '//*[@id="i0118"]')
+password.send_keys(' ') #password
+
+time.sleep(2)
+button1 = browser.find_element(By.XPATH, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[3]/div/div[2]/div/div[4]/div[2]/div/div/div/div')
+button1.click()
+
+button2 = browser.find_element(By.XPATH, '/html/body/div/form/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div/div/div[1]')
+button2.click()
+time.sleep(10)
+
+message = browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[1]/div[2]/div/div/div[1]/div/div[1]/div[3]/div[1]/div[4]/div[2]/div[1]/div/div[1]/div/div/div[1]/div/div/div')
+message.click()
+
+time.sleep(2)
+test = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div[1]/div[2]/div/div/div/div/div[1]/div[3]/div[1]/div[4]/div[1]')
+test.click()
+time.sleep(2)
+for i in range(10):
+    user = browser.find_element(By.CSS_SELECTOR, '.public-DraftStyleDefault-block')
+    user.send_keys('') #Key Word
+    time.sleep(2)
+    user.send_keys(Keys.ENTER)
