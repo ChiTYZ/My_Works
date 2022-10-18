@@ -1,0 +1,62 @@
+# Задача №1
+import collections
+
+numbers = [
+    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328,
+    615, 953, 345, 399, 162, 758, 219, 918, 237, 412, 566, 826, 248,
+    866, 950, 626, 949, 687, 217, 815, 67, 104, 58, 512, 24, 892, 894,
+    767, 553, 81, 379, 843, 831, 445, 742, 717, 958, 743, 527
+]
+list = []
+for i in range(len(numbers)):
+    if numbers[i] % 2 != 0 and numbers[i] >= 237:
+        list.append(numbers[i])
+    else:
+        break
+print(list)
+
+# Задача №2
+letters = ['Q', 'G', 'I', 'S', ' ', 'i', 's', ' ', 'a', 'w', 'e', 's',
+           'o', 'm', 'e', '!']
+phrase = ''
+print(phrase.join(letters))
+
+# Задача №3
+shapes = ['circle', 'hexagon', 'pentagon', 'ellipse', 'triangle', 'rectangle', 'line']
+for i in range(len(shapes)):
+    if shapes[i] == 'triangle' or shapes[i] == 'rectangle':
+        print(shapes[i], end=' ')
+
+# Задача №4
+shapes = ['circle', 'hexagon', 'pentagon', 'ellipse', 'triangle', 'rectangle', 'line']
+for i in range(len(shapes)):
+    if shapes[i] != 'triangle' or shapes[i] != 'rectangle' or shapes[i] != 'hexagon' or shapes[i] != 'pentagon':
+        print(shapes[i], end=' ')
+
+# Задача №5
+cities = ['Wien', 'Perm', 'Oxford', 'Paris', 'Novosibirsk', 'Bern', 'Rio', 'Washington']
+amount = 0
+for i in range(len(cities)):
+    if len(cities[i]) >= 5:
+        amount += 1
+print(amount)
+
+# Задача №6
+dictionary = {'Wien': 4, 'Perm': 4, 'Oxford': 6, 'Paris': 5,'Novosibirsk': 11, 'Bern': 4, 'Rio': 3, 'Washington': 10}
+amount = 0
+for i in dictionary:
+    if dictionary[i] >= 5:
+        amount += 1
+print(amount)
+
+# Задача №7
+stroka = str(input())
+print(dict(collections.Counter(stroka)))
+
+# Задача №8
+massiv = [[10, 10, 10, 10, 10], [10, 10, 10, 10, 10], [10, 10, 10, 10, 10], [10, 10, 10, 10, 10], [10, 10, 10, 10, 10]]
+
+for i in range(len(massiv)):
+    massiv.append(massiv[i] * massiv.index(i))
+    print(massiv,sep='\t')
+
