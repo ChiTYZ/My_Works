@@ -12,7 +12,7 @@ column = [] #столбцы
 total = 0
 total1 = 0
 keywords = [] #нужные ключевые слова
-for _ in range(10): #
+for _ in range(10): #нужное колличество циклов
     row =[] #строки
     try:
         search2 = browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[2]/div/div[3]/div/div/div/div/a")
