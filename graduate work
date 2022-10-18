@@ -1,0 +1,67 @@
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from time import time, ctime
+import csv
+
+
+browser = webdriver.Chrome()
+
+browser.get("https://yandex.ru/")
+column = [] #столбцы
+total = 0
+total1 = 0
+keywords = [] #нужные ключевые слова
+for _ in range(10): #
+    row =[] #строки
+    try:
+        search2 = browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[2]/div/div[3]/div/div/div/div/a")
+        print(search2.get_attribute("href"))
+        current_time = time()
+        res = ctime()
+        print("Local_time:", res)
+        row.append(search2.get_attribute("href"))
+        row.append(res)
+        print()
+        try:
+            if browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[2]/div/div[3]/div/div/div/div/a"):
+                if browser.find_element(By.CLASS_NAME, "rtb-border"):
+                    browser.refresh()
+                    total = 0
+        except NoSuchElementException:
+            if browser.find_element(By.CSS_SELECTOR, "div.direct-desktop__content-text"):
+                advertising = browser.find_element(By.CSS_SELECTOR, "div.direct-desktop__content-text")
+                advertising.text.split()
+                print(advertising.text.lower())
+                if advertising == '':
+                    browser.refresh()
+                    total = 0
+                else:
+                    text = advertising.text.lower()
+                    row.append(text)
+                    text1 = text.split()
+                    try:
+                        for i in range(len(text1)):
+                            for j in range(len(keywords)):
+                                if text1[i] == keywords[j]:
+                                    total += 1
+                                    if total > 1:
+                                        total2 = 1
+                                        total1 += total2
+                                        print('реклама подходит')
+                                        print(total)
+                                        row.append(str(total))
+                                        row.append('реклама подходит')
+                                    else:
+                                        total1 = 0
+                                else:
+                                    total1 = 0
+                    except IndexError:
+                        print('Слова кончились')
+        column.append(row)
+        browser.refresh()
+    except NoSuchElementException:
+        browser.refresh()
+with open('File.csv', "w", encoding='UTF-16') as file:
+    writer = csv.writer(file, delimiter='\t')
+    writer.writerows(column)
